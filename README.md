@@ -42,3 +42,11 @@ python3 checker.py 006970CA35de60c44645bbae8a215061b33IACV0fZUBw+72cVoL9eyGGh3Q6
 ## [Check] Error: user id crc32 not same
 ## [Check] Error: signature not same
 ```
+
+## 3 Server
+
+**Attention:**
+1. this is a very simple example service that you need to rewrite and check user's permissions very carefully!
+2. need to follow the actual business needs and don't assign user too much privilege!
+3. pay attention to the token ttl, don't assign a high permissions(audio, video, etc.) for a long time!
+
