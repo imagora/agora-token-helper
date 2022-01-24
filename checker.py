@@ -13,15 +13,9 @@ def check_dynamic_key(key, channel, user):
     try:
         if version in check_handler:
             print('version: ', version)
-            check_handler[version](key, channel, user)
-        # else:
-        #     ret = analyze.analyze_key_v2(key)
-        #     if ret[0]:
-        #         return
-        #     ret = analyze.analyze_key_v1(key)
-        #     if ret[0]:
-        #         return
-        #     print('Error: analyze key failed')
+            check_handler[version](key, channel=channel, user=user)
+        else:
+            print('Error: only support version 006')
     except Exception as e:
         print('[Check] failed, error: {}'.format(repr(e)))
 
