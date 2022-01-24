@@ -43,6 +43,9 @@ python3 checker.py 006970CA35de60c44645bbae8a215061b33IACV0fZUBw+72cVoL9eyGGh3Q6
 ## [Check] Error: signature not same
 ```
 
+You also need to pay attention to whether the privilege settings are correct, which cannot be judged from the token alone.
+For example, a user who has no privilege cannot send any audio, video, etc.
+
 ## 3 Server
 
 **Attention:**
