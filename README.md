@@ -1,6 +1,6 @@
 # Agora Token Helper
 
-Only support AgoraToken version 001 - 006.
+Support AgoraToken version 001 - 006. But for security reasons, I recommend using version 006 and above.
 
 ## 1 Analyzer
 
