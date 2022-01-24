@@ -7,15 +7,20 @@ import time
 
 from zlib import crc32
 from utils import packer
-from utils import analyze
 from hashlib import sha256
 from collections import OrderedDict
 
+from token import token_v6
+
 
 def check_key_v6(key, **kwargs):
-    parsed, signature, app_id, cname_crc, uid_crc, ts, salt, privilege = analyze.analyze_key_v6(key)
+    parsed, signature, app_id, cname_crc, uid_crc, ts, salt, privilege = token_v6.AgoraTokenV6.analyze(key)
     if not parsed:
+        print('[Check] Failed to analyze token')
         return
+    print('[Check] AccessToken(V6), Signature: {}, AppId: {}, CRC(ChannelName): {}, CRC(Uid): {}, Ts: {}, '
+          'Salt: {}, privilege: {}'.format(signature, app_id, cname_crc, uid_crc, ts, salt,
+                                           ','.join(['{}:{}'.format(x, y) for x, y in privilege.items()])))
 
     now_ts = int(time.time())
     if ts < now_ts:
@@ -52,4 +57,5 @@ def check_key_v6(key, **kwargs):
 
     if signature != hmac.new(config_app_cert.encode('utf-8'), val, sha256).digest().hex():
         print('[Check] Error: signature not same')
+
 

@@ -3,7 +3,7 @@ __author__ = "winking324@gmail.com"
 
 
 import argparse
-from utils import analyze
+from helper import analyze
 
 
 def analyze_dynamic_key(key):
@@ -16,7 +16,7 @@ def analyze_dynamic_key(key):
     }
     try:
         if version in analyze_handler:
-            print('version: ', version)
+            print('version: {}'.format(version))
             analyze_handler[version](key)
         else:
             ret = analyze.analyze_key_v2(key)

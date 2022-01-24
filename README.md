@@ -12,7 +12,7 @@ python3 analyzer.py 006970CA35de60c44645bbae8a215061b33IACV0fZUBw+72cVoL9eyGGh3Q
 
 # Output
 ## version:  006
-## [AccessToken] Signature: 95d1f654070fbbd9c5682fd7b218687743a3e88bc6e08f054b9f229227239747, AppId: 970CA35de60c44645bbae8a215061b33, CRC(ChannelName): 276646071, CRC(Uid): 3847331927, Ts: 1111111, Salt: 1, privilege: 1:1446455471
+## [Analyze] AccessToken(V6), Signature: 95d1f654070fbbd9c5682fd7b218687743a3e88bc6e08f054b9f229227239747, AppId: 970CA35de60c44645bbae8a215061b33, CRC(ChannelName): 276646071, CRC(Uid): 3847331927, Ts: 1111111, Salt: 1, privilege: 1:1446455471
 ```
 
 ## 2 Checker
@@ -25,7 +25,7 @@ python3 checker.py 006970CA35de60c44645bbae8a215061b33IACV0fZUBw+72cVoL9eyGGh3Q6
 
 # Output
 ## version:  006
-## [AccessToken] Signature: 95d1f654070fbbd9c5682fd7b218687743a3e88bc6e08f054b9f229227239747, AppId: 970CA35de60c44645bbae8a215061b33, CRC(ChannelName): 276646071, CRC(Uid): 3847331927, Ts: 1111111, Salt: 1, privilege: 1:1446455471
+## [Check] AccessToken(V6), Signature: 95d1f654070fbbd9c5682fd7b218687743a3e88bc6e08f054b9f229227239747, AppId: 970CA35de60c44645bbae8a215061b33, CRC(ChannelName): 276646071, CRC(Uid): 3847331927, Ts: 1111111, Salt: 1, privilege: 1:1446455471
 ## [Check] Error: token expired, now ts: 1642995315, expired at 1111111
 ## [Check] Error: token privilege expired, privilege: 1, now ts: 1642995315, expired at 1446455471
 
@@ -35,7 +35,7 @@ python3 checker.py 006970CA35de60c44645bbae8a215061b33IACV0fZUBw+72cVoL9eyGGh3Q6
 
 # Output
 ## version:  006
-## [AccessToken] Signature: 95d1f654070fbbd9c5682fd7b218687743a3e88bc6e08f054b9f229227239747, AppId: 970CA35de60c44645bbae8a215061b33, CRC(ChannelName): 276646071, CRC(Uid): 3847331927, Ts: 1111111, Salt: 1, privilege: 1:1446455471
+## [Check] AccessToken(V6), Signature: 95d1f654070fbbd9c5682fd7b218687743a3e88bc6e08f054b9f229227239747, AppId: 970CA35de60c44645bbae8a215061b33, CRC(ChannelName): 276646071, CRC(Uid): 3847331927, Ts: 1111111, Salt: 1, privilege: 1:1446455471
 ## [Check] Error: token expired, now ts: 1642995508, expired at 1111111
 ## [Check] Error: token privilege expired, privilege: 1, now ts: 1642995508, expired at 1446455471
 ## [Check] Error: channel name crc32 not same

@@ -2,7 +2,7 @@
 __author__ = "winking324@gmail.com"
 
 import argparse
-from utils import check
+from helper import check
 
 
 def check_dynamic_key(key, channel, user):
@@ -12,7 +12,7 @@ def check_dynamic_key(key, channel, user):
     }
     try:
         if version in check_handler:
-            print('version: ', version)
+            print('version: {}'.format(version))
             check_handler[version](key, channel=channel, user=user)
         else:
             print('Error: only support version 006')
