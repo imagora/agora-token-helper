@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 __author__ = "winking324@gmail.com"
 
-import sys
 import argparse
 from utils import check
 
@@ -11,17 +10,20 @@ def check_dynamic_key(key, channel, user):
     check_handler = {
         '006': check.check_key_v6,
     }
-    if version in check_handler:
-        print('version: ', version)
-        check_handler[version](key, channel, user)
-    # else:
-    #     ret = analyze.analyze_key_v2(key)
-    #     if ret[0]:
-    #         return
-    #     ret = analyze.analyze_key_v1(key)
-    #     if ret[0]:
-    #         return
-    #     print('Error: analyze key failed')
+    try:
+        if version in check_handler:
+            print('version: ', version)
+            check_handler[version](key, channel, user)
+        # else:
+        #     ret = analyze.analyze_key_v2(key)
+        #     if ret[0]:
+        #         return
+        #     ret = analyze.analyze_key_v1(key)
+        #     if ret[0]:
+        #         return
+        #     print('Error: analyze key failed')
+    except Exception as e:
+        print('[Check] failed, error: {}'.format(repr(e)))
 
 
 def main():

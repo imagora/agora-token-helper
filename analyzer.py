@@ -2,7 +2,7 @@
 __author__ = "winking324@gmail.com"
 
 
-import sys
+import argparse
 from utils import analyze
 
 
@@ -14,25 +14,28 @@ def analyze_dynamic_key(key):
         '005': analyze.analyze_key_v5,
         '006': analyze.analyze_key_v6,
     }
-    if version in analyze_handler:
-        print('version: ', version)
-        analyze_handler[version](key)
-    else:
-        ret = analyze.analyze_key_v2(key)
-        if ret[0]:
-            return
-        ret = analyze.analyze_key_v1(key)
-        if ret[0]:
-            return
-        print('Error: analyze key failed')
+    try:
+        if version in analyze_handler:
+            print('version: ', version)
+            analyze_handler[version](key)
+        else:
+            ret = analyze.analyze_key_v2(key)
+            if ret[0]:
+                return
+            ret = analyze.analyze_key_v1(key)
+            if ret[0]:
+                return
+            print('Error: analyze key failed')
+    except Exception as e:
+        print('Error: failed, error: {}'.format(repr(e)))
 
 
 def main():
-    if len(sys.argv) < 2:
-        print('run as: python3 analyzer.py dynamic_key_string')
-        exit(1)
+    arg_parser = argparse.ArgumentParser(description='Analyze Agora Token')
+    arg_parser.add_argument('token', help='agora token')
+    args = arg_parser.parse_args()
 
-    analyze_dynamic_key(sys.argv[1])
+    analyze_dynamic_key(args.token)
 
 
 if __name__ == '__main__':
