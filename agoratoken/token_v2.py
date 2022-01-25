@@ -3,7 +3,7 @@ __author__ = "winking324@gmail.com"
 
 import hmac
 
-from token import token
+from agoratoken import token
 from hashlib import sha1
 
 

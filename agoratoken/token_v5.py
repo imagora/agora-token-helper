@@ -4,7 +4,7 @@ __author__ = "winking324@gmail.com"
 import hmac
 import base64
 
-from token import token
+from agoratoken import token
 from utils import packer
 from hashlib import sha1
 

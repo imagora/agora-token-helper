@@ -6,7 +6,7 @@ import time
 import base64
 
 from zlib import crc32
-from token import token
+from agoratoken import token
 from utils import packer
 from hashlib import sha256
 from collections import OrderedDict
