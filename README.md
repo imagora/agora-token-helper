@@ -52,4 +52,5 @@ For example, a user who has no privilege cannot send any audio, video, etc.
 1. this is a very simple example service that you need to rewrite and check user's permissions very carefully!
 2. need to follow the actual business needs and don't assign user too much privilege!
 3. pay attention to the token ttl, don't assign a high permissions(audio, video, etc.) for a long time!
+4. should also think about the risk of AppCert leaks, which should consider a regularly updates to AppCert, and a blue-green replacement strategy.
 
