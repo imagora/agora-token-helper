@@ -10,8 +10,8 @@ from agoratoken import token_v5
 from agoratoken import token_v6
 
 
-# agoratoken ttl in seconds, should not set for particularly long periods of time.
-# if agoratoken expired, the client needs to send a request to the server to get a new one.
+# token ttl in seconds, should not set for particularly long periods of time.
+# if token expired, the client needs to send a request to the server to get a new one.
 # the server should check the user's permission, and do not assign too much privilege.
 MAX_TTL = 5 * 60
 
@@ -23,7 +23,7 @@ def generate_token_v1(app_id, app_cert, **kwargs):
         return False, {'reason': 'Request parameter error, "channel_name" empty'}
 
     generator = token_v1.AgoraTokenV1(app_id, app_cert, 0, 0)
-    return True, {'channel_name': channel_name, 'agoratoken': generator.token(channel_name)}
+    return True, {'channel_name': channel_name, 'token': generator.token(channel_name)}
 
 
 def generate_token_v2(app_id, app_cert, **kwargs):
@@ -35,7 +35,7 @@ def generate_token_v2(app_id, app_cert, **kwargs):
 
     expired_ts = int(params.get('expired_ts', MAX_TTL))
     generator = token_v2.AgoraTokenV2(app_id, app_cert, 0, 0, expired_ts)
-    return True, {'channel_name': channel_name, 'uid': uid, 'agoratoken': generator.token(channel_name, uid)}
+    return True, {'channel_name': channel_name, 'uid': uid, 'token': generator.token(channel_name, uid)}
 
 
 def generate_token_v3(app_id, app_cert, **kwargs):
@@ -47,7 +47,7 @@ def generate_token_v3(app_id, app_cert, **kwargs):
 
     expired_ts = int(params.get('expired_ts', MAX_TTL))
     generator = token_v3.AgoraTokenV3(app_id, app_cert, 0, 0, expired_ts)
-    return True, {'channel_name': channel_name, 'uid': uid, 'agoratoken': generator.token(channel_name, uid)}
+    return True, {'channel_name': channel_name, 'uid': uid, 'token': generator.token(channel_name, uid)}
 
 
 def generate_token_v4(app_id, app_cert, **kwargs):
@@ -63,7 +63,7 @@ def generate_token_v4(app_id, app_cert, **kwargs):
 
     expired_ts = int(params.get('expired_ts', MAX_TTL))
     generator = token_v4.AgoraTokenV4(app_id, app_cert, 0, 0, expired_ts)
-    return True, {'channel_name': channel_name, 'uid': uid, 'agoratoken': generator.token(channel_name, uid, service_type)}
+    return True, {'channel_name': channel_name, 'uid': uid, 'token': generator.token(channel_name, uid, service_type)}
 
 
 def generate_token_v5(app_id, app_cert, **kwargs):
@@ -89,7 +89,7 @@ def generate_token_v5(app_id, app_cert, **kwargs):
     if 'mic' not in params or str(params['mic']).lower() != 'false':
         extra_info[token_v5.AgoraTokenV5.kExtraInfoAllowUploadInChannel] = \
             token_v5.AgoraTokenV5.kPermisionAudioVideoUpload
-    return True, {'channel_name': channel_name, 'uid': uid, 'agoratoken': generator.token(channel_name, uid, service_type, extra_info)}
+    return True, {'channel_name': channel_name, 'uid': uid, 'token': generator.token(channel_name, uid, service_type, extra_info)}
 
 
 def generate_token_v6(app_id, app_cert, **kwargs):
@@ -108,12 +108,12 @@ def generate_token_v6(app_id, app_cert, **kwargs):
         privilege[token_v6.AgoraTokenV6.kPrivilegePublishDataStream] = expired_ts
 
     generator = token_v6.AgoraTokenV6(app_id, app_cert)
-    return True, {'channel_name': channel_name, 'uid': uid, 'agoratoken': generator.token(channel_name, uid, privilege)}
+    return True, {'channel_name': channel_name, 'uid': uid, 'token': generator.token(channel_name, uid, privilege)}
 
 
 def generate_token(app_id, app_cert, version, **kwargs):
     params = dict(kwargs)
-    response = {'app_id': app_id, 'agoratoken': ''}
+    response = {'app_id': app_id, 'token': ''}
     if 'tag' in params:
         response['tag'] = params['tag']
 
@@ -127,7 +127,7 @@ def generate_token(app_id, app_cert, version, **kwargs):
         '6': generate_token_v6,
     }
     if version not in version_hanlder:
-        return False, {'reason': 'Request agoratoken version {} not supported'.format(version)}
+        return False, {'reason': 'Request token version {} not supported'.format(version)}
 
     ok, info = version_hanlder[version](app_id, app_cert, **params)
     response.update(info)
