@@ -54,3 +54,22 @@ For example, a user who has no privilege cannot send any audio, video, etc.
 3. pay attention to the token ttl, don't assign a high permissions(audio, video, etc.) for a long time!
 4. should also think about the risk of AppCert leaks, which should consider a regularly updates to AppCert, and a blue-green replacement strategy.
 
+If you want to use a server, you need to modify the `configs/project.json` file and set the parameters in the file to the one used by the current generated AgoraToken.
+
+This part relies on flask and needs to be installed according to the `requirements.txt`.
+
+``` shell
+# Install
+pip3 install -r requirements.txt
+
+# Example(appID: 970CA35de60c44645bbae8a215061b33, appCert: 5CFd2fd1755d40ecb72977518be15d3b)
+python3 server.py
+
+# Request
+curl -X "POST" "http://127.0.0.1:8080/token/6" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{"expired_ts":1586843002,"channel_name":"123","privilege":[1000]}'
+     
+# Response
+{"app_id":"970CA35de60c44645bbae8a215061b33","agoratoken":"006970CA35de60c44645bbae8a215061b33IAB+3uS6z5qjTFNJdj8L/kpoJ361NRzQ5Lr3Ld8cLZ0dJdJjSIgAAAAAKAAQIGcAmrLwYQUAAQB6TZVeAgB6TZVeAwB6TZVeBAB6TZVe6AN6TZVe","channel_name":"123","uid":""}
+```
