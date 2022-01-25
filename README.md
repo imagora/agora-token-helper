@@ -73,3 +73,7 @@ curl -X "POST" "http://127.0.0.1:8080/token/6" \
 # Response
 {"app_id":"970CA35de60c44645bbae8a215061b33","token":"006970CA35de60c44645bbae8a215061b33IAB+3uS6z5qjTFNJdj8L/kpoJ361NRzQ5Lr3Ld8cLZ0dJdJjSIgAAAAAKAAQIGcAmrLwYQUAAQB6TZVeAgB6TZVeAwB6TZVeBAB6TZVe6AN6TZVe","channel_name":"123","uid":""}
 ```
+
+## 4 Cautious
+
+'Security and safety were the reward of dullness.' by Hanif Kureishi
