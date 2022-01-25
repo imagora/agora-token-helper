@@ -10,7 +10,7 @@ from utils import packer
 from hashlib import sha256
 from collections import OrderedDict
 
-from token import token_v6
+from agoratoken import token_v6
 
 
 def check_key_v6(key, **kwargs):

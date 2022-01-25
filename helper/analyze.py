@@ -2,12 +2,12 @@
 __author__ = "winking324@gmail.com"
 
 
-from token import token_v1
-from token import token_v2
-from token import token_v3
-from token import token_v4
-from token import token_v5
-from token import token_v6
+from agoratoken import token_v1
+from agoratoken import token_v2
+from agoratoken import token_v3
+from agoratoken import token_v4
+from agoratoken import token_v5
+from agoratoken import token_v6
 
 
 def analyze_key_v1(key):
